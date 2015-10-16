@@ -17,6 +17,12 @@ headers = {"Accept-Language": "ko-kr", "User-Agent": "%EC%98%AC%EB%A0%88%20tv%20
 # 5) check Fiddler or Charles http request : device_id=xxxxx-xxxx-xxxx......
 # 
 
+# 올레 tv play.. 의 문제점은 페어링 이후 device_id 로만 모든게 처리된다는 것.(어쩔수 없나....)
+# - 셋탑박스 메뉴에서 큐알이나 전화번호로 인증 받아서 device_id 할당 받고, 웹주소만(KT서버) 알면 
+# 어디에서나/어느브라우저라도 시청 중인 채널을 알수 있고, 셋탑박스를 끌 수 있고, 채널도 변경 가능하고.....
+# device_id 는 ssl proxy 없이 tcpdump/http proxy만 해도 보이는 메뉴가 있..
+#
+# + TV 742번 메뉴 연결 관리에서 등록된 디바이스 확인/삭제 가능.
 
 device_id = "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxxx"
 
