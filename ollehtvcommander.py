@@ -1,6 +1,8 @@
 #!/usr/bin/env python2
 # encoding: utf-8
-
+# code from https://github.com/ubaransel/lgcommander
+# code from https://github.com/ypid/lgcommander
+# 
 import sys
 import httplib
 import simplejson as json
