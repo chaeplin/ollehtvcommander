@@ -46,12 +46,27 @@ def getstatus():
         sys.exit(httpResponse.reason)
 
     d = json.loads(httpResponse.read())
-	
-    if d['STB_STATE'] == 0:
-        print "STB is off"
-    else:
-        print "STB is on"
-        print "CH_NO : %s, CH_NAME : %s, PROGRAMNAME : %s" % (d['SERVICE_CH_NO'], d['CH_NAME'], d['PROGRAMNAME'])
+
+    if 'STB_STATE' in d:
+
+        if d['STB_STATE'] == '0':
+            print ("-----> STB IS OFF")
+
+        elif d['STB_STATE'] == '2':
+            print ("-----> STB IS ON")
+
+            if d['RUN_MODE'] == '0':
+                print ("-----> PROGRAMNAME : %s") % d['PROGRAMNAME']               
+            elif d['RUN_MODE'] == '2':
+                print ("-----> VOD CONTENT_ID : %s, PROGRAMNAME : %s") % (d['CONTENT_ID'], d['PROGRAMNAME'])
+            elif d['RUN_MODE'] == '1':
+                print ("-----> CH_NO : %s, CH_NAME : %s, PROGRAMNAME : %s") % (d['SERVICE_CH_NO'], d['CH_NAME'], d['PROGRAMNAME'])
+
+            else:
+                print ("-----> PROGRAMNAME : ???")
+
+        else:
+            print ("-----> STB IS ???")
 
 # key
 # 409 : on / off
@@ -66,7 +81,7 @@ def getoff():
     else:
         return True
 
-
 if getauth():
     getstatus()
     #getoff()
+
